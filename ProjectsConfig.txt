@@ -1,0 +1,16 @@
+NODE.JS CREATE PROJECT
+
+	mkdir Backend
+	cd Backend
+	npm init -y
+	npm install express mysql2 dotenv cors
+	npm install --save-dev nodemon
+
+ANGULAR CREATE PROJECT
+	ng new Frontend
+		- configurar css
+		- Seleccionar la opcion "No rendering" de angular
+
+ANGULAR AND NODE.JS AUX GIT HUB 
+	npm install
+	
