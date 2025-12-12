@@ -7,10 +7,12 @@ NODE.JS CREATE PROJECT
 	npm install --save-dev nodemon
 
 ANGULAR CREATE PROJECT
+
 	ng new Frontend
 		- configurar css
 		- Seleccionar la opcion "No rendering" de angular
 
 ANGULAR AND NODE.JS AUX GIT HUB 
+
 	npm install
 	

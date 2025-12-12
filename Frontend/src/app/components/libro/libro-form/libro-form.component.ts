@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { LibroService } from '../../../services/libro.service';
 import { AutorService } from '../../../services/autor.service';
 import { Autor } from '../../../models/autor.interface';
@@ -23,7 +23,6 @@ import { CategoriaService } from '../../../services/categoria.service';
   styleUrl: './libro-form.component.css'
 })
 export class LibroFormComponent implements OnInit {
-
 
   EntityForm: FormGroup;
 
@@ -85,7 +84,7 @@ export class LibroFormComponent implements OnInit {
         }
       },
       error: (err) => {
-        
+
       }
     });
 
@@ -96,7 +95,7 @@ export class LibroFormComponent implements OnInit {
         }
       },
       error: (err) => {
-        
+
       }
     });
 
@@ -112,9 +111,14 @@ export class LibroFormComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.EntityForm.invalid) {
+      this.error = 'Por favor, complete todos los campos obligatorios.';
+      this.EntityForm.markAllAsTouched();  // <- activa errores en pantalla
+      return;
+    }
+    this.error = ''; // Limpia error
+
     if (this.isEditMode) {
-
-
       if (confirm('¿Guardar los cambios?')) {
         this.libroService.Actualizar(this.Entity_ID, this.EntityForm.value).subscribe({
           next: (response) => {
@@ -130,7 +134,6 @@ export class LibroFormComponent implements OnInit {
 
     } else {
 
-      console.log(this.EntityForm.value);
       this.libroService.Crear(this.EntityForm.value).subscribe({
         next: (response) => {
           if (response.success) {

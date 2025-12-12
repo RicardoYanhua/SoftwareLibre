@@ -5,3 +5,23 @@
     width: fit-content;
     flex-direction: column;
 }
+
+.error-message {
+  margin-bottom: 15px;
+  padding: 10px;
+  color: red;
+  border-radius: 5px;
+  font-size: var(--font-14);
+}
+
+.required-label {
+    position: relative;
+}
+.required-label::after {
+    content: "*";
+    color: red;
+    position: absolute;
+    top: -4px;   /* ajusta más arriba o abajo */
+    right: -10px; /* ajusta más a la derecha o izquierda */
+    font-size: 18px;
+}

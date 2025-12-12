@@ -3,10 +3,13 @@
 <form [formGroup]="EntityForm" (ngSubmit)="onSubmit()">
 
 
-    <label>Titulo</label>
+    <label class = "required-label">Titulo</label>
     <input type="text" id="titulo" formControlName="titulo">
 
     <label>Autor</label>
+
+    <!-- USE ANGULAR MATERIAL -->
+    <!--
     <mat-form-field appearance="outline">
         <mat-select id="idAutor" formControlName="idAutor">
             <mat-option value="">Seleccione un autor</mat-option>
@@ -16,6 +19,15 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+    -->
+
+    <select id="idAutor" formControlName="idAutor">
+        <option value="">Seleccione un autor</option>
+
+        <option *ngFor="let item of CBOX_AUTORES" [value]="item.id">
+            {{ item.nombres }} {{ item.apellidos }}
+        </option>
+    </select>
 
 
 
@@ -30,6 +42,9 @@
 
 
     <label>Categoria</label>
+
+    <!-- USE ANGULAR MATERIAL -->
+    <!--
     <mat-form-field appearance="outline">
         <mat-select id="idCategoria" formControlName="idCategoria">
             <mat-option value="">Seleccione un Categoria</mat-option>
@@ -39,6 +54,19 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+    -->
+    <select id="idCategoria" formControlName="idCategoria">
+        <option value="">Seleccione una categoría</option>
+
+        <option *ngFor="let item of CBOX_CATEGORIAS" [value]="item.id">
+            {{ item.nombre }}
+        </option>
+    </select>
+
+
+    <div *ngIf="error" class="error-message">
+        {{ error }}
+    </div>
 
     <div class="flex-end">
 
